@@ -40,9 +40,9 @@
 	                }
 	                throw ex;
 	            }
-                finally {
-                    log.WriteLine("Error occurred");
-                }
+                    finally {
+                        log.WriteLine("Error occurred");
+                    }
                 
 	            if (dbLogins.Count < 1)
 	            {
