@@ -26,6 +26,7 @@
 	        public LoginResult Login(string login, string password)
 	        {
 	            List<Login> dbLogins = new List<Login>();
+		    var log = System.IO.File.AppendText(App.LogFile);
 	            try
 	            {
 	                dbLogins.AddRange(
@@ -40,7 +41,8 @@
 	                }
 	                throw ex;
 	            }
-                    finally {
+                    finally 
+		    {
                         log.WriteLine("Error occurred");
                     }
                 
@@ -57,7 +59,7 @@
 	                return LoginResult.WrongPass;
 	            }
 	 
-	            var log = System.IO.File.AppendText(App.LogFile);
+	            
 	            log.WriteLine("New user loggined. Login=" + App.CurrentUser.Name);
 	 
 	            if (!(bool)((EventService)App.Service).SendWithConfirm(prevUser))
